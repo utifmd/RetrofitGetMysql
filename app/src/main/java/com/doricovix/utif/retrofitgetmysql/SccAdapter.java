@@ -2,6 +2,7 @@ package com.doricovix.utif.retrofitgetmysql;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -47,7 +48,7 @@ public class SccAdapter extends RecyclerView.Adapter<SccAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        view = View.inflate(context, R.layout.item_layout_scc, parent);
+        view = LayoutInflater.from(context).inflate(R.layout.item_layout_scc, parent, false);
         holder = new ViewHolder(view);
 
         return holder;

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rv_scc;
     private RecyclerView.LayoutManager lo_mng;
     private SccAdapter adapter;
-    private List<ItemScc> itemScc;
+    private List<ItemScc> itemScc = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         lo_mng = new LinearLayoutManager(this);
         adapter = new SccAdapter(this, itemScc);
-
-        itemScc = new ArrayList<>();
 
         rv_scc.setLayoutManager(lo_mng);
         rv_scc.setAdapter(adapter);
@@ -77,9 +77,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ItemResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("TAG", t.getMessage());
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_search:
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
